@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+        <title>Ejecución</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <style>
+            body {font-size:60%;
+                font-family: sans-serif;
+                margin-top: 0px;
+                padding-top: 0px;}
+            table.fixed { table-layout:fixed; }
+            table.fixed td { overflow: hidden; }
+
+
+  
+
+       
+
+            #container3 {
+                    background-color: #0C85CA;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <h5 style="margin-left: 170px; margin-top: 0px;" ><b>Detalle de Ejecución</b></h5>
+        <br>
+        {{#ejecucion}}
+            <table class="fixed" style="border-collapse: collapse;" border="0"; width="220">
+                <tbody>
+                    <tr>
+                        <td>Nombre:</td>
+                        <td>{{this.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Inicio:</td>
+                        <td>{{this.startDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Fecha Fin:</td>
+                        <td>{{this.endDate}}</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario ejecutor:</td>
+                        <td>{{this.userName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Matriz aplicada:</td>
+                        <td>{{this.matrizName}}</td>
+                    </tr>
+                    <tr>
+                        <td>Cantidad de escenarios:</td>
+                        <td>{{this.scenarios.length}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <table class="container2"   width="520">
+                <thead>
+                    <tr class="container3">
+                        <td style="background-color: #0C85CA; color:white;">Origen</td>
+                        <td style="background-color: #0C85CA;  color:white;" >Destino</td>
+                        <td style="background-color: #0C85CA; color:white;">Resultado Salida</td>
+                        <td style="background-color: #0C85CA; color:white;">Hora Salida</td>
+                        <td style="background-color: #0C85CA; color:white;">HangUp Cause</td>
+                        <td style="background-color: #0C85CA; color:white;">Resultado Entrada</td>
+                        <td style="background-color: #0C85CA; color:white;">Hora Entrada</td>
+                        <td style="background-color: #0C85CA; color:white;">Resultado Final</td>
+                        <td style="background-color: #0C85CA; color:white;">MOS</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each this.scenarios}}
+                    <tr>
+                        <td style="background-color: #E1E6E9;">
+                            Canal {{origin.idCanal}} - 
+                            {{origin.operatorName}} {{origin.tecnologyName}} -
+                            {{origin.number}}
+                        </td>
+                        <td style="background-color: #E1E6E9;">
+                            {{destination.type}} {{destination.id}} -
+                            {{destination.name}} -
+                            {{destination.number}}
+                        </td>
+                        <td style="background-color: #E1E6E9;">{{outputResult}}</td>
+                        <td style="background-color: #E1E6E9;">{{outputDate}}</td>
+                        <td style="background-color: #E1E6E9;">{{hangupReason}}</td>
+                        <td style="background-color: #E1E6E9;">{{inputResult}}</td>
+                        <td style="background-color: #E1E6E9;">{{inputDate}}</td>
+                        <td style="background-color: #E1E6E9;">{{result}}</td>
+                        <td style="background-color: #E1E6E9;">{{mos}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>                          
+            </table>
+        {{/ejecucion}}
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
